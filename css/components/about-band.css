@@ -1,0 +1,17 @@
+/* Dark background strip on the About page: from Team to the middle of the banner box.
+   The dark background stops 96px (mobile) / 128px (desktop) above the banner box bottom [MEASURED];
+   the rest is page background. */
+@layer components {
+  .about-band {
+    display: flow-root;                 /* keep Team's margin inside the dark background */
+    margin-top: 97px;                   /* [MEASURED] mobile dark background y3360 − stats cell bottom 3263 (stats frame built 527 tall) */
+    background: linear-gradient(var(--surface-dark) calc(100% - 96px), var(--surface-page) 0);   /* [MEASURED] dark until y7568, box bottom 7664 */
+  }
+
+  @media (width >= 64rem) {
+    .about-band {
+      margin-top: 128px;                /* [MEASURED] dark background y2256 − stats cell bottom 2128 */
+      background-image: linear-gradient(var(--surface-dark) calc(100% - 128px), var(--surface-page) 0);   /* [MEASURED] dark until y5568, box bottom 5696 */
+    }
+  }
+}

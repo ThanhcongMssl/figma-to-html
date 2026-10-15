@@ -1,0 +1,129 @@
+/* Header on dark background. Mobile: logo + ☰ button (checkbox + label). Desktop ≥ 64rem:
+   horizontal menu + outlined CONTACT button. */
+@layer components {
+  .site-header {
+    position: relative;
+    padding-top: 16px;                  /* [MEASURED] logo y16 in both frames */
+    height: 80px;                       /* [MEASURED] mobile hero image starts at y80 [FIGMA] */
+  }
+
+  .site-header__brand {
+    float: left;
+    height: 48px;
+    line-height: 48px;
+    font-size: 0;
+  }
+
+  .site-header__logo {                  /* [MEASURED] ring 46×44 at 136,16 + core 19×18 offset 14,14 [FIGMA] */
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    margin-left: 1px;                   /* [MEASURED] located Polygon x136 */
+  }
+  .site-header__core { position: absolute; left: 14px; top: 14px; }
+
+  .site-header__name {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 14px;                  /* [MEASURED] text starts at x197 = 136 + 46 + 15 */
+    font-size: var(--h4-size);          /* [FIGMA] H4 700 24/32 white */
+    line-height: 52px;                  /* [MEASURED] text y30 → 53 */
+    font-weight: var(--weight-bold);
+    color: var(--text-on-dark);
+  }
+
+  /* ---------- Mobile: menu button ---------- */
+  .site-header__toggle {
+    float: right;
+    display: block;
+    position: relative;
+    width: 48px;                        /* [FIGMA] 48×48 */
+    height: 48px;
+    border: 1px solid rgb(255 255 255 / 0.3);  /* [MEASURED] faint border */
+    border-radius: var(--radius);
+    cursor: pointer;
+  }
+  .site-header__switch:focus-visible + .site-header__toggle { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .site-header__bars,
+  .site-header__bars::before,
+  .site-header__bars::after {
+    position: absolute;
+    left: 15px;                         /* [ESTIMATE] 3 bars of 16px, 2px thick */
+    width: 16px;
+    height: 2px;
+    border-radius: 1px;
+    background-color: var(--color-white);
+  }
+  .site-header__bars { top: 22px; }
+  .site-header__bars::before,
+  .site-header__bars::after { content: ""; left: 0; }
+  .site-header__bars::before { top: -6px; }
+  .site-header__bars::after { top: 6px; }
+
+  /* Open menu on mobile: overlay below the header, shown only when the checkbox is checked */
+  .site-header__nav {
+    display: none;
+    position: absolute;
+    z-index: 20;
+    top: 72px;
+    left: var(--gutter);
+    right: var(--gutter);
+    max-block-size: calc(100dvh - 88px);
+    overflow-y: auto;
+    padding: 16px 24px 24px;
+    border: 1px solid var(--line-dark);
+    border-radius: var(--radius);
+    background-color: var(--surface-dark);
+  }
+
+  .site-header__switch:checked ~ .site-header__nav { display: block; }
+
+  .site-header__link {
+    display: block;
+    font-size: var(--body-size);        /* [FIGMA] Text 16/32 white */
+    line-height: 44px;                  /* tap target ≥ 44px on mobile */
+    color: var(--text-on-dark);
+  }
+  .site-header__link:hover { color: var(--accent); }
+
+  .site-header__cta {
+    width: 138px;                       /* [MEASURED] 1167 → 1304 */
+    margin-top: 12px;
+    padding-inline: 0;
+  }
+
+  /* ---------- Desktop ---------- */
+  @media (width >= 75rem) {
+    .site-header__toggle { display: none; }
+
+    .site-header__nav {
+      display: block;
+      position: static;
+      max-block-size: none;
+      overflow: visible;
+      padding: 0;
+      border: 0;
+      background: none;
+    }
+
+    .site-header__list {
+      position: absolute;
+      top: 16px;
+      left: calc(var(--gutter) + 329px);   /* [MEASURED] About starts at x464 = 135 + 329 */
+      font-size: 0;
+      white-space: nowrap;
+    }
+    .site-header__list > li { display: inline-block; margin-right: 104px; }  /* [MEASURED] text starts at x464 / 615 / 787 / 944 */
+    .site-header__list > li:nth-child(2) { margin-right: 103px; }
+
+    .site-header__link { line-height: 56px; }   /* [MEASURED] text y35 → 51 */
+
+    .site-header__cta {
+      position: absolute;
+      top: 16px;                           /* [MEASURED] y16 → 63 */
+      right: var(--gutter);
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+/* #F3D1BF bordered card: round orange icon 80 + H4 title + description + link */
+@layer components {
+  .card {
+    position: relative;
+    border: 1px solid var(--line);      /* [FIGMA] */
+    background-color: var(--color-blush);
+  }
+
+  .card--raised {                       /* [FIGMA] white background, shadow 0 32 64 #391400 4% */
+    z-index: 1;
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-card);
+  }
+
+  .card__icon {
+    display: block;
+    position: relative;
+    width: 80px;                        /* [FIGMA] Oval 80 #EF6C57 */
+    height: 80px;
+    border-radius: 50%;
+    background-color: #ef6c57;          /* [FIGMA] */
+  }
+  .card__icon > img {
+    position: absolute;
+    left: 24px;                         /* [FIGMA] 32 icon at +24 */
+    top: 24px;
+  }
+
+  .card__icon--img { background: none; }
+  .card__icon--img > img { left: 0; top: 0; }   /* [MEASURED] cropped from the export image — waiting for the original icon */
+
+  .card__title { margin-top: 41px; }    /* [FIGMA] H4 +169 = 48 + 80 + 41 */
+  .card__copy  { margin-top: 19px; }    /* [FIGMA] Text +220 = 169 + 32 + 19 */
+
+  .card__link {                         /* [MEASURED] anchored to the bottom: link 52 above the card bottom (y5916 / 7756) */
+    position: absolute;
+    bottom: 52px;
+  }
+}

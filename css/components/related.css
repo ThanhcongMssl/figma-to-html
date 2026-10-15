@@ -1,0 +1,28 @@
+/* "Related Projects": rule, H4 title, 2 project cards (reuses .work from
+   portfolio.css). Desktop 2 cards 570×416, gutter 30; mobile 2 cards 329×416 stacked
+   [FIGMA]. The 2nd card differs between the 2 frames, so each size shows one card. */
+@layer components {
+  .related { margin-top: 64px; }        /* [FIGMA] rule y3264 / y3120 − share row bottom 3200 / 3056 */
+
+  .related__title {
+    padding-top: 72px;                  /* [FIGMA] H4 y3337 / y3193 − rule 3265 / 3121 */
+    border-top: 1px solid var(--line);  /* [FIGMA] 1170 / 329 × 1, #F3D1BF */
+  }
+
+  .related__grid { margin-top: 39px; }  /* [FIGMA] card y3408 / y3264 − H4 bottom 3369 / 3225 */
+  .related__grid::after { content: ""; display: table; clear: both; }
+
+  .related__link { color: inherit; }
+  .related__link::after { content: ""; position: absolute; inset: 0; }   /* the whole card is clickable */
+  .related__link:focus-visible { outline: 0; }
+  .work:has(.related__link:focus-visible) { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .related__item--desktop { display: none; }
+
+  @media (width >= 64rem) {
+    .related__item--desktop { display: block; }
+    .related__item--mobile { display: none; }
+    .related .work { margin-bottom: 0; }
+    .related .work__img { object-position: center; }   /* [MEASURED] image covers the full 570, cropped at the center (like the Portfolio page) */
+  }
+}

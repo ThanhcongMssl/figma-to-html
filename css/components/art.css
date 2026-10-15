@@ -1,0 +1,25 @@
+/* Illustrations for the two-column sections (About, Features, Service).
+   Mobile → 1439: merged image .art__mobile [ASSET] exported by the designer.
+   ≥ 1440: merged image .art__desk cropped 1:1 from the 1440 frame export [MEASURED] — the loose
+   pieces (rotated strokes, stars, springs) have no correctly oriented export, so assembling
+   them would drift; the crop has the same 1x resolution as the original assets.
+   .art__desk is shared by hero, CTA, banner (positions in the corresponding files). */
+@layer components {
+  .art__desk { display: none; }
+  .art__mobile { width: 100%; max-width: 329px; }
+
+  @media (width >= 64rem) and (width < 90rem) {
+    .art__mobile { margin-inline: auto; }
+  }
+
+  @media (width >= 90rem) {
+    .art__mobile { display: none; }
+    .art { min-height: 1px; }
+    .art__desk { display: block; position: absolute; max-width: none; }
+
+    /* coordinates = crop corner − media frame corner [MEASURED] */
+    .art--about .art__desk    { left: 4px;  top: 3px; }    /* 139,1174 − 135,1171 */
+    .art--features .art__desk { left: 43px; top: 47px; }   /* 778,3431 − 735,3384 */
+    .art--service .art__desk  { left: 9px;  top: 160px; }  /* 144,4720 − 135,4560 */
+  }
+}

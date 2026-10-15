@@ -1,0 +1,14 @@
+# Keep file formatting consistent across editors, independent of personal settings.
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Markdown uses two trailing spaces for line breaks, so trailing whitespace is not trimmed.
+[*.md]
+trim_trailing_whitespace = false

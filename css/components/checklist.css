@@ -1,0 +1,32 @@
+/* List with round orange tick marks (check.png 32×32 [ASSET]) */
+@layer components {
+  .checklist {
+    margin-top: 32px;                   /* [FIGMA] first item y5082 − lead bottom 5050 */
+  }
+
+  .checklist__item {
+    position: relative;
+    min-height: 32px;
+    padding: 2px 0 0 48px;              /* [FIGMA] text x71 y+2 relative to icon x23 */
+    font-size: var(--body-size);        /* [FIGMA] Text 16/32 Gray */
+    line-height: var(--body-lh);
+    color: var(--text-muted);
+  }
+  .checklist--strong .checklist__item { color: var(--text-primary); }   /* [FIGMA] Services: Text_Dark */
+
+  .checklist__item + .checklist__item { margin-top: 14px; }  /* [FIGMA] step 48 */
+
+  .checklist__item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 32px;
+    height: 32px;
+    background: url("../../assets/icon/check.png") no-repeat;
+  }
+
+  @media (width >= 64rem) {
+    .checklist { margin-top: 32px; }   /* [FIGMA] y3786 − lead bottom 3754 */
+  }
+}

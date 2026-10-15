@@ -1,0 +1,32 @@
+/* Small quote with a round 64 avatar (Service section) */
+@layer components {
+  .quote {
+    position: relative;
+    margin-top: 30px;                   /* [FIGMA] avatar y6936 − lead bottom 6906 */
+    padding-left: 84px;                 /* [FIGMA] text x107 = 23 + 84 */
+    min-height: 64px;
+  }
+
+  .quote__avatar {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .quote__text { padding-top: 8px; }   /* [FIGMA] quote y6944 = avatar + 8 */
+
+  .quote__name {
+    margin-top: 4px;                    /* [MEASURED] name y7020 */
+    font-size: var(--body-size);        /* [FIGMA] Text 16/32 */
+    line-height: var(--body-lh);
+    color: var(--text-primary);
+  }
+
+  .split--service .split__button { margin-top: 20px; }  /* [MEASURED] button y7072 */
+
+  @media (width >= 64rem) {
+    .quote__text { max-width: 386px; }  /* [FIGMA] w386 */
+    .quote__name { margin-top: 12px; }  /* [FIGMA] name y5116 */
+    .split--service .split__button { margin-top: 36px; }  /* [FIGMA] button y5184 */
+  }
+}

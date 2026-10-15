@@ -1,0 +1,15 @@
+.DS_Store
+Thumbs.db
+node_modules/
+*.log
+.snap-tmp-*.html
+
+# Raw 2x exports from Figma — commit only the compressed versions.
+assets/img/raw/
+
+# Temporary files from the measure/capture scripts
+.snapm-*.html
+.el-*.html
+
+# Packages downloaded from Figma Community — keep them out of the repo
+*.zip

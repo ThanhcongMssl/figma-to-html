@@ -1,0 +1,88 @@
+/* What Our Clients Saying: 4 review cards. Card height follows the content
+   (48 top/bottom padding [FIGMA]); desktop 2 floated columns, card 4 pulled up with a
+   negative margin because card 1 is exactly 64px taller than card 2 [FIGMA 400 − 336]. */
+@layer components {
+  .testimonials {
+    padding-top: 92px;                  /* [FIGMA] eyebrow y14956 − pink background 14864 */
+    text-align: center;
+  }
+
+  .testimonials__title {
+    max-width: 300px;                   /* [FIGMA] w291, 2 lines */
+    margin: 17px auto 0;                /* [FIGMA] H3 y15005 */
+    font-size: var(--h3-size);
+    line-height: var(--h3-lh);
+    letter-spacing: 0;
+  }
+
+  .testimonials__list { margin-top: 35px; text-align: left; }   /* [FIGMA] card y15136 */
+  .testimonials__list::after { content: ""; display: table; clear: both; }
+
+  .review {
+    position: relative;
+    padding: 47px 27px 47px;            /* [FIGMA] stars +48, x51 (border 1) */
+    border: 1px solid var(--line);
+  }
+  .review + .review { margin-top: -1px; }
+  .review:first-child { border-radius: var(--radius) var(--radius) 0 0; }
+  .review:last-child  { border-radius: 0 0 var(--radius) var(--radius); }
+
+  .review--featured {                   /* [FIGMA] white background, shadow 0 32 64 4% */
+    z-index: 1;
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-card);
+  }
+
+  .review__stars {                      /* [ASSET] Star (1) 23×22; [FIGMA] row 152×24, stars 32 apart */
+    width: 152px;
+    height: 24px;
+    background: url("../../assets/icon/Star (1).png") 1px 0 no-repeat, url("../../assets/icon/Star (1).png") 33px 0 no-repeat, url("../../assets/icon/Star (1).png") 65px 0 no-repeat, url("../../assets/icon/Star (1).png") 97px 0 no-repeat, url("../../assets/icon/Star (1).png") 129px 0 no-repeat;
+  }
+
+  .review__text { margin-top: 36px; }   /* [FIGMA] text y11020 − stars bottom 10984 */
+
+  .review__author {
+    position: relative;
+    margin-top: 36px;                   /* [FIGMA] avatar y11184 − text bottom 11148 */
+    min-height: 80px;
+    padding: 9px 0 0 104px;             /* [FIGMA] name x287 = 183 + 104, y +9 */
+  }
+  .review__avatar { position: absolute; left: 0; top: 0; border-radius: 50%; }
+  .review--b .review__avatar { top: 1px; }    /* [MEASURED] mobile */
+  .review--b .review__name { position: relative; top: 2px; }   /* [MEASURED] mobile: 2-line name y15945 */
+  .review--d .review__avatar { top: -1px; }   /* [MEASURED] y11456 / mobile y16768 */
+  .review__name { display: block; }
+  .review__company { display: block; margin: 3px 0 -10px; }   /* [FIGMA] y11228; negative bottom: Figma measures the bottom padding from the avatar when the name is 2 lines */
+
+  .testimonials__more { margin-top: 48px; }   /* [MEASURED] button y16960 */
+  .testimonials__more > .button { line-height: 44px; }   /* [MEASURED] mobile: SEE ALL text 2px higher */
+
+  @media (width >= 64rem) {
+    .testimonials { padding-top: 124px; }   /* [FIGMA] eyebrow y10668 − 10544 */
+    .testimonials__title {
+      max-width: 420px;
+      margin-top: 20px;                 /* [FIGMA] H2 y10720 */
+      font-size: var(--h2-size);
+      line-height: var(--h2-lh);
+      letter-spacing: var(--h2-ls);
+    }
+    .testimonials__list { margin-top: 64px; }   /* [FIGMA] card y10912 */
+
+    .review {
+      width: calc(50% + 0.5px);         /* [FIGMA] 586, borders overlap by 1px */
+      padding-inline: 47px;             /* [FIGMA] x183 = 135 + 48 */
+    }
+    .review + .review { margin-top: 0; }
+    .review--featured, .review--c { float: left; clear: left; }
+    .review--b, .review--d { float: right; clear: right; margin-left: -1px; }
+    .review--b .review__avatar { top: 0; }
+    .review--b .review__name { top: 0; }
+    .review--featured { border-radius: var(--radius) 0 0 0; }
+    .review--b { border-radius: 0 var(--radius) 0 0; }
+    .review--c { margin-top: -1px; border-radius: 0 0 0 var(--radius); }
+    .review--d { position: relative; top: -63px; border-radius: 0 0 var(--radius) 0; }   /* [FIGMA] y11247 — a float can't rise above card 3, so top is used */
+
+    .testimonials__more { margin-top: 64px; }   /* [MEASURED] button y11712 */
+    .testimonials__more > .button { line-height: 50px; }
+  }
+}

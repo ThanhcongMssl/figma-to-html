@@ -1,0 +1,33 @@
+/* Pagination: 5 centered 48×48 cells, step 56 (gutter 8). The current cell has an orange background.
+   Same size on mobile and desktop [FIGMA]; only the distance to the grid above differs. */
+@layer components {
+  .pagination {
+    margin-top: 48px;                   /* [MEASURED] mobile y2784 − last card bottom 2736; desktop 2272 − 2192 − 32 (card bottom margin) */
+    text-align: center;
+  }
+
+  .pagination__list { padding: 0; font-size: 0; }
+  .pagination__list > li { display: inline-block; margin-inline: 4px; }   /* [FIGMA] x584, 640… step 56 */
+
+  .pagination__link {
+    display: block;
+    width: 48px;                        /* [FIGMA] Light/Button/Primary 48×48 */
+    height: 48px;
+    padding-top: 18px;                  /* [FIGMA] text top 18 */
+    border-radius: var(--radius);
+    background-color: var(--surface-card);
+    box-shadow: var(--shadow-button);   /* [MEASURED] faint shadow under the white cell */
+    font-size: var(--small-size);       /* [FIGMA] Epilogue 900 14/100% uppercase */
+    font-weight: var(--weight-black);
+    line-height: 14px;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    transition: background-color var(--duration-fast) var(--ease-out);
+  }
+  .pagination__link:hover { background-color: var(--color-peach); }
+  .pagination__link[aria-current="page"] {
+    background-color: var(--accent);   /* [FIGMA] #EF6D58 */
+    box-shadow: none;
+    color: var(--text-on-dark);
+  }
+}

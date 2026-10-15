@@ -1,0 +1,51 @@
+/* Client logo strip. Each logo is placed at its Figma coordinates, converted to a % of the
+   content width so it scales: mobile (x − 23) / 329, desktop (x − 135) / 1170. */
+@layer components {
+  .logos {
+    position: relative;
+  }
+
+  .logos__list {
+    position: relative;
+    height: 273px;                      /* [FIGMA] 1104 → rule 1376 (including border) */
+    border-bottom: 1px solid var(--line);   /* [FIGMA] Rectangle 329×1 #F3D1BF */
+  }
+
+  .logos__item { position: absolute; }
+  .logos__item > img { display: block; }
+
+  /* [MEASURED] located on 1_Home_Agency_375 (top measured from 1104) */
+  .logos__item--1 { left: 2.13%;  top: 47px; }    /* x30  y1151 */
+  .logos__item--2 { left: 59.27%; top: 52px; }    /* x218 y1156 */
+  .logos__item--3 { left: 6.38%;  top: 113px; }   /* x44  y1217 */
+  .logos__item--4 { left: 62.61%; top: 126px; }   /* x229 y1230 */
+  .logos__item--5 { left: 31.0%;  top: 198px; }   /* x125 y1302 */
+
+  @media (width >= 64rem) {
+    .logos__list { height: 193px; }     /* [MEASURED] 880 → rule 1072 (including border) */
+
+    /* [MEASURED] located on 1_Home_Agency_1440 (top measured from 880) */
+    .logos__item--1 { left: 0;      top: 76px; }  /* x135  y956 */
+    .logos__item--2 { left: 25.04%; top: 81px; }  /* x428  y961 */
+    .logos__item--3 { left: 46.75%; top: 73px; }  /* x682  y953 */
+    .logos__item--4 { left: 69.4%;  top: 86px; }  /* x947  y966 */
+    .logos__item--5 { left: auto; right: 0; top: 87px; }  /* x1179 y967, flush with the right edge */
+  }
+
+  /* On dark background (About page): logo images recolored to #5E6080 [MEASURED]
+     (assets/img/logo-*-dark.png, same alpha channel as the original logos). */
+  .logos--dark { padding-top: 71px; }   /* [MEASURED] mobile first logo y6583 − 47 − FAQ bottom 6465 */
+  .logos--dark .logos__list { border-bottom: 0; }
+
+  @media (width < 64rem) {
+    /* [MEASURED] located on 2_About_Agency_375 (top measured from 6536) — rows sparser than the Home page */
+    .logos--dark .logos__item--1 { left: 1.82%; top: 47px; }    /* x29  y6583 */
+    .logos--dark .logos__item--3 { left: 6.08%; top: 133px; }   /* x43  y6669 */
+    .logos--dark .logos__item--4 { top: 146px; }                /* x229 y6682 */
+    .logos--dark .logos__item--5 { top: 238px; }                /* x125 y6774 */
+  }
+
+  @media (width >= 64rem) {
+    .logos--dark { padding-top: 44px; } /* [MEASURED] logo y4982 − 73 − FAQ bottom 4865 */
+  }
+}

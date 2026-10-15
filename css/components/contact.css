@@ -1,0 +1,109 @@
+/* Map + Get In Touch form + 3 contact cells.
+   Mobile: form on top, 375×720 map below. Desktop: form overlaps the map. */
+@layer components {
+  .contact__map {
+    position: relative;
+    padding-top: 127px;                 /* [MEASURED] form y23616 − button bottom 23489 */
+    padding-bottom: 784px;              /* [MEASURED] map y24144 (720 tall) */
+  }
+
+  .contact__map-img {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 720px;                      /* [ASSET] map.png 1440×720 */
+    object-fit: cover;
+  }
+
+  .contact__pin {                       /* [ASSET] pin.png 72 */
+    position: absolute;
+    left: calc(50% - 36px);             /* [ESTIMATE] centered on mobile */
+    bottom: 324px;
+  }
+
+  .contact__form {
+    position: relative;
+    padding: 58px 28px 48px;            /* [MEASURED] title y15353, x51 */
+    border-radius: var(--radius);
+    background-color: var(--color-white);
+  }
+  .contact__field { margin-top: 16px; } /* [MEASURED] step 64 */
+  .contact__title + .visually-hidden + .contact__field { margin-top: 23px; }   /* [MEASURED] first field y15408 */
+  .contact__submit { display: block; margin: 32px 0 0 auto; }   /* [MEASURED] button y+368, right-aligned */
+
+  .contact__info { margin-top: 32px; }  /* [MEASURED] cell y24896 */
+  .contact__info::after { content: ""; display: table; clear: both; }
+
+  .info {
+    position: relative;
+    height: 192px;                      /* [FIGMA] 391×192 */
+    padding: 31px 0 0 27px;             /* [FIGMA] icon +32, x+28 */
+    border: 1px solid var(--line);
+  }
+  .info + .info { margin-top: 0; }      /* [MEASURED] mobile step 192, borders don't overlap */
+  .info:first-child { border-radius: var(--radius) var(--radius) 0 0; }
+  .info:last-child  { border-radius: 0 0 var(--radius) var(--radius); }
+
+  .info__icon {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    width: 64px;                        /* [FIGMA] Oval 64 #EF6D58 */
+    height: 64px;
+    border-radius: 50%;
+    background-color: var(--accent);
+  }
+  .info__icon > img { position: absolute; left: 0; top: 0; }   /* [MEASURED] cropped from the export image — waiting for the original icon */
+
+  .info__label {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: 4px;                           /* [MEASURED] */
+    margin-left: 19px;                  /* [MEASURED] text x270 */
+  }
+
+  .info__value {
+    display: block;
+    margin-top: 27px;                   /* [MEASURED] y+122 */
+    color: var(--text-primary);
+  }
+
+  @media (width >= 64rem) {
+    .contact__map { height: 720px; padding: 128px 0 0; }   /* [FIGMA] map y15168, form y15296 */
+    .contact__map-img { top: 0; bottom: auto; }
+    .contact__pin { left: calc(50% + 214px); bottom: auto; top: 324px; }   /* [FIGMA] 934,15492 = center 720 + 214 */
+
+    .contact__form { width: 470px; padding-inline: 48px; }   /* [FIGMA] x183 */
+    .contact__info { margin-top: 80px; }   /* [FIGMA] y15968 */
+    .info {
+      float: left;
+      width: calc((100% + 2px) / 3);
+      padding-left: 47px;
+    }
+    .info + .info { margin: 0 0 0 -1px; }
+    .info:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+    .info:last-child  { border-radius: 0 var(--radius) var(--radius) 0; }
+  }
+
+  /* Contact page (8_Contact): same blocks as Home, numbers from the Contact frame [FIGMA] */
+  .contact--page .contact__map { padding-top: 64px; }   /* [FIGMA] mobile form y464 − hero bottom 400 */
+  .contact--page .contact__form { padding-top: 57px; }  /* [FIGMA] form card exactly 464 tall (Home 465) */
+  .contact--page .contact__field { padding-top: 2px; }  /* [MEASURED] placeholder y657 / mobile y593 */
+  .contact--page .field--area { padding-top: 8px; }     /* [MEASURED] "Message" y785 */
+  .contact--page .info__label { left: 1px; }            /* [FIGMA] text = icon + 88 (x270 / mobile x139) */
+  .contact--page .info__value { margin-top: 26px; }     /* [FIGMA] y1322 / mobile y1866 */
+  @media (width < 64rem) {
+    .contact--page .info + .info {      /* [FIGMA] mobile cells 2, 3: y1935 / y2127, 193 tall — overlapping the border of the cell above */
+      height: 193px;
+      margin-top: -1px;
+      padding-top: 32px;                /* [FIGMA] icon y1968 / y2160 = cell + 33 */
+    }
+  }
+  @media (width >= 64rem) {
+    .contact--page .contact__map { padding-top: 128px; }      /* [FIGMA] form y528 − map 400 */
+    .contact--page .info { width: calc((100% + 3px) / 3); }   /* [FIGMA] 3 cells of 391, borders overlap by 1 */
+    .contact--page .info:first-child { margin-left: -1px; }   /* [FIGMA] first cell x134 (Home x135) */
+  }
+}

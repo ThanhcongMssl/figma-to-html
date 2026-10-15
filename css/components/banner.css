@@ -1,0 +1,81 @@
+/* Banner cam "We're Help To Build Your Dream Project" */
+@layer components {
+  .banner { padding-top: 128px; }       /* [FIGMA] box y25600 − cell bottom 25472 */
+
+  .banner__box {
+    position: relative;
+    padding: 333px 28px 48px;           /* [FIGMA] H3 y25933 = box + 333 */
+    border-radius: var(--radius);
+    background-color: var(--accent);
+    --tone-strong: var(--text-on-dark);
+    --tone-muted: var(--text-on-dark-muted);
+  }
+
+  .banner__title {
+    font-size: var(--h3-size);          /* [FIGMA] mobile H3 40/48 */
+    line-height: var(--h3-lh);
+    letter-spacing: 0;
+  }
+  .banner__copy { margin-top: 15px; }   /* [FIGMA] y26140 */
+  .banner__body > .button { margin-top: 20px; }   /* [FIGMA] y26288 */
+
+  .banner__art {
+    position: absolute;
+    left: 29px;                         /* [FIGMA] merged image 273×264 at 52,25632 */
+    top: 32px;
+    width: 273px;
+    max-width: calc(100% - 56px);       /* [ESTIMATE] < 375: image shrinks, doesn't stick out of the box */
+  }
+
+  @media (width >= 64rem) {
+    .banner { padding-top: 130px; }     /* [FIGMA] box y16290 */
+    .banner__box {
+      height: var(--banner-box-h, 542px);   /* [FIGMA] 1170×542 */
+      padding: var(--banner-pad-top, 94px) 0 0 100px;   /* [FIGMA] H2 y16384, x235 */
+    }
+    .banner__title {
+      max-width: 420px;
+      font-size: var(--h2-size);
+      line-height: var(--h2-lh);
+      letter-spacing: var(--h2-ls);
+    }
+    .banner__copy { margin-top: 28px; max-width: 470px; }   /* [MEASURED] y16604 */
+    .banner__body > .button { margin-top: 36px; }           /* [MEASURED] y16702 */
+
+    .banner__art { left: auto; right: 48px; top: 139px; width: 273px; max-width: none; }   /* [ESTIMATE] 1024–1439: merged image */
+  }
+
+  @media (width >= 90rem) {
+    .banner__art { left: 0; right: auto; top: 0; width: 100%; height: 100%; }
+    .banner__art-mobile { display: none; }
+    .banner__art > .art__desk { left: var(--banner-art-x, 670px); top: var(--banner-art-y, 55px); }   /* [MEASURED] crop 805,16345 − box 135,16290 */
+  }
+
+  /* About page: the box straddles the edge of the dark background (see about-band.css) */
+  .banner--about { padding-top: 119px; }   /* [MEASURED] mobile box y6928 − logo frame bottom 6809 */
+
+  /* Services page: box like About, on a light background */
+  .banner--services { padding-top: 93px; }   /* [MEASURED] mobile box y3440 (step list pulled up 1px, see steps.css) */
+
+  /* Portfolio page: box like Services, right below the pagination row */
+  .banner--portfolio { padding-top: 112px; }   /* [MEASURED] box y2944 − pagination bottom 2832 (mobile); desktop 2432 − 2320 */
+  .banner--blog { padding-top: 79px; }         /* [MEASURED] Blog mobile: box y4784 − bottom rule 4705 */
+  .banner--post { padding-top: 100px; }        /* [FIGMA] Single Post mobile: box y4976 − date bottom 4876 */
+
+  @media (width >= 64rem) {
+    .banner--about { padding-top: 50px; }   /* [MEASURED] box y5152 */
+    .banner--services { padding-top: 141px; }   /* [MEASURED] box y2656 (step list pulled up 1px, see steps.css) */
+    .banner--project { padding-top: 160px; }    /* [FIGMA] Single Project: box y3840 − related card bottom 3680 (mobile like Portfolio: 112) */
+    .banner--blog { padding-top: 111px; }       /* [FIGMA] Blog: box y2560 − bottom rule 2449 */
+    .banner--post { padding-top: 132px; }       /* [FIGMA] Single Post: box y3712 − date bottom 3580 */
+    .banner--about,
+    .banner--services,
+    .banner--portfolio { --banner-box-h: 544px; --banner-pad-top: 96px; }   /* [MEASURED] About 1170×544, H2 y5248; [FIGMA] Services 1170×544, H2 y2752 */
+  }
+
+  @media (width >= 90rem) {
+    .banner--about,
+    .banner--services,
+    .banner--portfolio { --banner-art-x: 640px; --banner-art-y: 58px; }   /* [MEASURED] image 775,5210 − box 135,5152; Services 775,2714 − 135,2656 */
+  }
+}

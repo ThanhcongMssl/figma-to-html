@@ -1,0 +1,82 @@
+/* Testimonials as a carousel on dark background (About page).
+   Reuses the .review__* elements from testimonials.css. White center card 770×400;
+   desktop has 2 side cards faded to 24.29% [FIGMA] — decorative only, no JS.
+   Mobile: one card spanning the full 375 width [MEASURED]. */
+@layer components {
+  .reviews {
+    padding-top: 145px;                 /* [MEASURED] mobile eyebrow y4268 − team dots row bottom 4123 */
+    text-align: center;
+  }
+
+  .reviews__title {
+    margin-top: 17px;                   /* [MEASURED] mobile H3 */
+    font-size: var(--h3-size);          /* [MEASURED] mobile H3 40/48 */
+    line-height: var(--h3-lh);
+    letter-spacing: 0;
+  }
+
+  .reviews__list {
+    position: relative;
+    margin: 35px calc(-1 * var(--gutter)) 0;   /* [MEASURED] mobile card y4448, spans the full width */
+    text-align: left;
+  }
+
+  .reviews__card {
+    width: auto;
+    padding: 47px 50px;                 /* [MEASURED] mobile stars x52 y+48 (border 1) */
+    background-color: var(--color-white);
+    --tone-strong: var(--text-primary);
+    --tone-muted: var(--text-muted);
+  }
+  .reviews__card:first-child { border-radius: var(--radius); }
+
+  .reviews__card--prev,
+  .reviews__card--next { display: none; }
+
+  .reviews__dots {
+    margin-top: 48px;                   /* [MEASURED] mobile dots y5120 − card bottom 5072 */
+    font-size: 0;
+    line-height: 0;                     /* line exactly 12px tall, matching the dots */
+  }
+  .reviews__dot {
+    display: inline-block;
+    width: 12px;                        /* [FIGMA] Oval 12, border #4E4F6E */
+    height: 12px;
+    border: 1px solid #4e4f6e;
+    border-radius: 50%;
+  }
+  .reviews__dot + .reviews__dot { margin-left: 20px; }   /* [FIGMA] step 32 */
+  .reviews__dot--on { border-color: var(--accent); background-color: var(--accent); }
+
+  @media (width >= 64rem) {
+    .reviews { padding-top: 96px; }     /* [MEASURED] eyebrow y3132 − team dots row bottom 3036 */
+    .reviews__title {
+      margin-top: 21px;                 /* [MEASURED] H2 text y3188 */
+      font-size: var(--h2-size);
+      line-height: var(--h2-lh);
+      letter-spacing: var(--h2-ls);
+    }
+
+    .reviews__list { height: 400px; margin: 63px 0 0; }   /* [MEASURED] card y3376, 770×400 */
+
+    .reviews__card {
+      width: 770px;                     /* [FIGMA] */
+      max-width: 100%;
+      margin-inline: auto;
+      padding: 47px;                    /* [FIGMA] content +48 (border 1) */
+    }
+
+    .reviews__card--prev,
+    .reviews__card--next {
+      display: block;
+      position: absolute;
+      top: 0;
+      opacity: 0.2429;                  /* [FIGMA] block opacity 24.29% */
+    }
+    .reviews__card--next { left: calc(50% + 385px); }    /* [FIGMA] x1105 */
+    .reviews__card--prev { right: calc(50% + 384px); }   /* [FIGMA] x−434 → 336 */
+
+    .reviews__dots { margin-top: 64px; }  /* [MEASURED] dots y3840 − card bottom 3776 */
+    .reviews__dot--m { display: none; }   /* [FIGMA] desktop 3 dots, mobile 5 */
+  }
+}

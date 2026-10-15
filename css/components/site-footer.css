@@ -1,0 +1,113 @@
+/* Footer: logo, 2 menu columns, social links, copyright line.
+   Mobile: everything centered and stacked. */
+@layer components {
+  .site-footer {
+    position: relative;
+    padding-top: 121px;                 /* [FIGMA] logo y26505 − banner bottom 26384 */
+    padding-bottom: 36px;               /* [FIGMA] bottom 27324 → 27360 */
+    text-align: center;
+  }
+
+  .site-footer__brand { line-height: 34px; margin-bottom: -2px; }   /* [MEASURED] Agency y26510 */
+
+  .site-footer__col { margin-top: 51px; }   /* [MEASURED] MENU y26588 */
+  .site-footer__col + .site-footer__col { margin-top: 48px; }   /* [FIGMA] SERVICE y26812 */
+  .site-footer__list { margin-top: 16px; }
+  .site-footer__link {
+    display: inline-block;
+    font-size: var(--body-size);        /* [FIGMA] Text 16/32 */
+    line-height: var(--body-lh);
+    color: var(--text-primary);
+  }
+  .site-footer__link:hover { color: var(--accent); }
+
+  .site-footer__social { margin-top: 52px; font-size: 0; }   /* [FIGMA] y27040 */
+  .site-footer__social > li { display: inline-block; vertical-align: top; }
+  .site-footer__social > li + li { margin-left: 8px; }       /* [FIGMA] step 56 */
+  .site-footer__soc {
+    display: block;
+    position: relative;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--accent);
+  }
+  .site-footer__soc > img { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+  .site-footer__soc:hover { background-color: var(--color-dark); }
+
+  .site-footer__bottom {
+    margin-top: 64px;                   /* [FIGMA] rule y27152 */
+    padding-top: 43px;                  /* [FIGMA] text y27196 */
+    border-top: 1px solid var(--line);
+  }
+  .site-footer__copy { max-width: 210px; margin-inline: auto; }   /* [FIGMA] w198, 2 lines */
+  .site-footer__legal { margin-top: 32px; font-size: 0; }        /* [FIGMA] y27292 */
+  .site-footer__legal > a + a { margin-left: 70px; }             /* [FIGMA] x50 / x220 */
+
+  @media (width >= 64rem) {
+    .site-footer {
+      height: 464px;                    /* [MEASURED] 16832 → 17296 */
+      padding: 83px var(--gutter) 0;    /* [MEASURED] logo y16912 */
+      text-align: left;
+    }
+    .site-footer__brand { float: left; width: 300px; line-height: 40px; padding-top: 3px; }   /* [MEASURED] */
+    .site-footer__col,
+    .site-footer__col + .site-footer__col { float: left; width: 300px; margin: 0; padding-top: 9px; }   /* [FIGMA] x435 / x735; [MEASURED] MENU y16932 */
+    .site-footer__list { margin-top: 16px; }   /* [MEASURED] About y16972 */
+    .site-footer__social { position: absolute; right: var(--gutter); top: 80px; margin: 0; }   /* [MEASURED] y16912 */
+    .site-footer__bottom {
+      position: absolute;
+      left: var(--gutter);
+      right: var(--gutter);
+      top: 336px;                       /* [MEASURED] rule y17168 */
+      margin: 0;
+      padding-top: 43px;                /* [FIGMA] text y17212 */
+    }
+    .site-footer__copy { float: left; max-width: none; }
+    .site-footer__legal { float: right; margin: 0; }
+    .site-footer__legal > a + a { margin-left: 68px; }           /* [FIGMA] x1200 */
+  }
+
+  @media (width < 64rem) {
+    .site-footer--about,
+    .site-footer--services,
+    .site-footer--portfolio { padding-top: 105px; padding-bottom: 34px; }   /* [MEASURED] mobile "Agency" y7774; page bottom 8640. Services [FIGMA] y4281 − box 4176 */
+    .site-footer--about .site-footer__bottom,
+    .site-footer--services .site-footer__bottom,
+    .site-footer--portfolio .site-footer__bottom { margin-top: 64px; }    /* [MEASURED] mobile rule y8416; Services [FIGMA] y4928 */
+    .site-footer--portfolio .site-footer__copy {   /* [MEASURED] Figma: line 1 x90, line 2 x113, y4484 */
+      position: relative;
+      top: 1px;
+      left: 1px;                        /* line 2 moves right by 1 */
+    }
+    .site-footer--portfolio .site-footer__copy-1 { position: relative; left: -3px; }   /* line 1: total −2 */
+    /* Single Project: Figma line 1 x90, line 2 x112, y5923 — 1px higher than Portfolio, line 2 shifted 1px left */
+    .site-footer--project .site-footer__copy,
+    .site-footer--blog .site-footer__copy,
+    .site-footer--post .site-footer__copy { top: 0; left: 0; }
+    .site-footer--project .site-footer__copy-1,
+    .site-footer--blog .site-footer__copy-1,
+    .site-footer--post .site-footer__copy-1 { left: -1px; }
+    .site-footer--project .site-footer__brand,
+    .site-footer--blog .site-footer__brand,
+    .site-footer--post .site-footer__brand { position: relative; top: -1px; }   /* [MEASURED] "Agency" text y5230 (Blog y5630) */
+  }
+
+  /* Contact page: no banner, a horizontal rule right above the footer [FIGMA] */
+  .site-footer--contact::before {
+    content: "";
+    position: absolute;
+    left: var(--gutter);
+    right: var(--gutter);
+    top: 0;
+    border-top: 1px solid var(--line);  /* [FIGMA] 1170×1 #F3D1BF */
+  }
+  .site-footer--contact { margin-top: 111px; }   /* [FIGMA] mobile rule y3760 − FAQ bottom 3649 */
+  .site-footer--contact .site-footer__brand { position: relative; top: -1px; }   /* [MEASURED] "Agency" text y3870 / y2366 */
+  .site-footer--contact .site-footer__legal > a { display: inline-block; width: 102px; }   /* [FIGMA] Terms of Use 102×32 */
+  .site-footer--contact .site-footer__legal > a + a { width: 105px; margin-left: 68px; }   /* [FIGMA] Privacy Policy 105×32, x220 (mobile) / x1200 */
+  @media (width >= 64rem) {
+    .site-footer--contact { margin-top: 127px; }   /* [FIGMA] rule y2272 − FAQ bottom 2145 */
+    .site-footer--contact .site-footer__legal > a { text-align: right; }   /* [FIGMA] desktop right-aligned */
+  }
+}

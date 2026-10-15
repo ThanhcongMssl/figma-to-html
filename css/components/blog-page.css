@@ -1,0 +1,62 @@
+/* Blog page (6_Blog): 2 featured posts 570×336 + 3-column grid 370×224, a
+   "Load more" button. Post cards reuse .post from blog.css (Home). Mobile: 8 posts in one
+   column like Home [FIGMA]. */
+@layer components {
+  .page-top--blog { height: 464px; }    /* [MEASURED] mobile: 2-line title, dark background 0 → 464 */
+
+  .page-hero--blog .page-hero__title { position: relative; top: -1px; }   /* [MEASURED] Figma text y168 (desktop) / y148 (mobile): Chrome renders 1px lower */
+
+  .blog-page { padding-top: 80px; }     /* [MEASURED] mobile first image y544 − dark background 464 */
+
+  .blog-page__grid,
+  .post--featured + .post--featured { margin-top: 52px; }   /* [MEASURED] like Home: next image 52 below the date */
+  .blog-page__grid::after { content: ""; display: table; clear: both; }
+
+  .blog-page__more { display: block; margin: 52px auto 0; }   /* [MEASURED] mobile button y4224 */
+  .blog-page__more,
+  .newsletter--blog .button { line-height: 50px; }   /* [MEASURED] mobile button text y4242 / y4594: 1px below center like desktop */
+
+  /* Content differs between the 2 frames */
+  .blog-page__d { display: none; }
+
+  /* Tablet: 2 columns (Figma doesn't draw this size) */
+  @media (48rem <= width < 64rem) {
+    .blog-page__featured::after { content: ""; display: table; clear: both; }
+    .blog-page .post,
+    .blog-page .post + .post { float: left; width: calc((100% - 30px) / 2); margin: 0; }   /* [ESTIMATE] 30 gutter like desktop */
+    .blog-page .post:nth-child(2n) { margin-left: 30px; }
+    .blog-page .post:nth-child(2n + 1) { clear: left; }
+    .blog-page .post:nth-child(n + 3) { margin-top: 52px; }   /* [ESTIMATE] */
+  }
+
+  @media (width >= 64rem) {
+    .page-top--blog { height: 400px; }  /* [FIGMA] dark background 0 → 400 */
+    .blog-page { padding-top: 80px; }   /* [FIGMA] image y480 − 400 */
+
+    .blog-page__m { display: none; }
+    .blog-page__d { display: inline; }
+
+    .blog-page__featured {
+      padding-bottom: 68px;             /* [MEASURED] date bottom → rule y1104 */
+      border-bottom: 1px solid var(--line);
+    }
+    .blog-page__featured::after { content: ""; display: table; clear: both; }
+    .post--featured { float: left; width: calc((100% - 30px) / 2); }   /* [FIGMA] 570, khe 30 */
+    .post--featured + .post--featured { margin: 0 0 0 30px; }
+    .post--featured > .post__img { aspect-ratio: auto; height: 336px; }   /* [FIGMA] 570×336 */
+    .post--featured > .post__title {
+      max-width: 538px;                 /* [FIGMA] w538 */
+      margin-top: 19px;                 /* [FIGMA] y893 − category text bottom 874 */
+      font-size: var(--h3-size);        /* [FIGMA] H3 800 40/48 */
+      line-height: var(--h3-lh);
+      font-weight: var(--weight-xbold);
+    }
+    .post--featured > .post__date { margin-top: 15px; }   /* [FIGMA] y1004 − title bottom 989 */
+
+    .blog-page__grid { margin-top: 79px; }   /* [FIGMA] image y1184 − bottom rule 1105 */
+    .blog-page__grid > .post:nth-child(3n + 1) { clear: left; margin-left: 0; }
+    .blog-page__grid > .post:nth-child(n + 4) { margin-top: 68px; }   /* [FIGMA] image y1664 − date bottom 1596 */
+
+    .blog-page__more { margin-top: 68px; }   /* [MEASURED] button y2144 − date bottom 2076 */
+  }
+}

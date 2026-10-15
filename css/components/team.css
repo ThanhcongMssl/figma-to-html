@@ -1,0 +1,109 @@
+/* Team: horizontally scrolling card strip (scroll-snap, no JS), decorative pagination dots */
+@layer components {
+  .team {
+    position: relative;
+    margin-top: 124px;                  /* [FIGMA] eyebrow y13436 − button bottom 13312 */
+  }
+
+  .team__title {
+    margin-top: 17px;                   /* [FIGMA] H3 y13485 */
+    font-size: var(--h3-size);
+    line-height: var(--h3-lh);
+    letter-spacing: 0;
+  }
+
+  .team__nav { display: none; }
+
+  .team__list {
+    margin: 35px calc(-1 * var(--gutter)) 0;   /* [FIGMA] card y13664; overflows the edge to reveal the next card */
+    padding-inline: var(--gutter);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    white-space: nowrap;
+    font-size: 0;
+    scrollbar-width: none;
+  }
+  .team__list::-webkit-scrollbar { display: none; }
+
+  .member {
+    display: inline-block;
+    vertical-align: top;
+    width: 270px;                       /* [FIGMA] 270×272 */
+    scroll-snap-align: start;
+    white-space: normal;
+  }
+  .member + .member { margin-left: 30px; }  /* [FIGMA] card 2 at x323 */
+
+  .member__frame {
+    display: block;
+    position: relative;
+    height: 272px;
+    overflow: hidden;
+    border: 1px solid var(--line-dark);  /* [FIGMA] #3A3C56 */
+    border-radius: var(--radius);
+  }
+  .member__photo { position: absolute; bottom: 0; }   /* [MEASURED] image touches the frame bottom */
+  .member__photo--1 { left: 36px; }    /* [MEASURED] 172 − 135 − 1 */
+  .member__photo--2 { left: 5px; }     /* [MEASURED] 441 − 435 − 1 */
+  .member__photo--3 { left: 36px; }    /* [MEASURED] 772 − 735 − 1 */
+  .member__photo--4 { left: 11px; }    /* [MEASURED] 1047 − 1035 − 1 */
+
+  .member__name { margin-top: 25px; }  /* [FIGMA] name +297 */
+  .member__role { margin-top: 3px; }   /* [FIGMA] job title +332 */
+
+  .team__dots {
+    margin-top: 31px;                   /* [MEASURED] dots y14064 */
+    font-size: 0;
+    text-align: center;
+  }
+  .team__dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #4e4f6e;          /* [FIGMA] */
+    border-radius: 50%;
+  }
+  .team__dot + .team__dot { margin-left: 20px; }   /* [FIGMA] step 32 */
+  .team__dot--on { border-color: var(--accent); background-color: var(--accent); }
+
+  @media (width >= 64rem) {
+    .team { margin-top: 140px; }        /* [FIGMA] eyebrow y9068 − button bottom 8928 */
+    .team__title {
+      max-width: 540px;
+      margin-top: 20px;                 /* [FIGMA] H2 y9120 */
+      font-size: var(--h2-size);
+      line-height: var(--h2-lh);
+      letter-spacing: var(--h2-ls);
+    }
+
+    .team__nav {                        /* [FIGMA] 2 round 48 buttons at 1193/1257, y9200 */
+      display: block;
+      position: absolute;
+      right: var(--gutter);
+      top: 132px;
+      font-size: 0;
+    }
+    .team__arrow {
+      display: inline-block;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgb(255 255 255 / 0.3);   /* [MEASURED] */
+      border-radius: 50%;
+      background: url("../../assets/icon/Path (3).png") no-repeat 16px 18.5px;  /* [FIGMA] arrow 14×9 */
+    }
+    .team__arrow--prev { background-image: url("../../assets/icon/Path (1).png"); }
+    .team__arrow + .team__arrow { margin-left: 16px; }
+
+    .team__list { margin: 64px 0 0; padding-inline: 0; }   /* [FIGMA] card y9312 */
+    .member { width: calc((100% - 90px) / 4); }
+    .team__dots { margin-top: 48px; }   /* [MEASURED] dots y9728 */
+    .team__dot--m { display: none; }    /* [FIGMA] desktop 3 dots, mobile 6 */
+  }
+
+  .team--about { margin-top: 108px; }   /* [MEASURED] mobile eyebrow y3468 − dark background 3360 */
+
+  @media (width >= 64rem) {
+    .team--about { margin-top: 92px; }  /* [MEASURED] eyebrow y2348 − dark background 2256 */
+  }
+}

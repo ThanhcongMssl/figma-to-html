@@ -1,0 +1,63 @@
+/* Features 2: intro paragraph + 2 cards (Professional raised, Accessibility flat) */
+@layer components {
+  .highlights {
+    padding-top: 128px;                 /* [FIGMA] eyebrow y5340 − 5212 */
+  }
+
+  .highlights__lead { margin-top: 30px; }                     /* [FIGMA] y5402 */
+  .highlights__intro > .text-link { display: inline-block; margin-top: 34px; }  /* [FIGMA] y5532 */
+
+  .highlights__list { margin-top: 36px; }                     /* [FIGMA] card y5600 */
+
+  .highlights__card {
+    height: 336px;                      /* [FIGMA] 329×336 */
+    padding: 47px 0 0 47px;             /* [FIGMA] content +48 (border 1) */
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+  .highlights__card .card__copy { max-width: 240px; }        /* [FIGMA] w240 */
+
+  .highlights__card--flat {
+    height: 272px;                      /* [FIGMA] 329×272 */
+    margin-top: -1px;                   /* overlapping borders */
+    padding-top: 104px;                 /* [FIGMA] H4 +105 */
+    border-radius: 0 0 var(--radius) var(--radius);
+  }
+  .highlights__card--flat .card__title { margin-top: 0; }
+
+  @media (width >= 64rem) {
+    .highlights {
+      padding-top: 8px;                 /* [MEASURED] raised card y4160 − 4152 */
+      min-height: 408px;                /* 4152 → 4560 */
+    }
+    .highlights::after { content: ""; display: table; clear: both; }
+
+    .highlights__intro {
+      float: left;
+      width: 400px;
+      padding-top: 76px;                /* [FIGMA] eyebrow y4236 */
+    }
+    .highlights__lead { max-width: 370px; }
+
+    .highlights__list {
+      float: right;
+      width: 57.26%;                    /* [MEASURED] 670 / 1170, cards start at x635 */
+      margin-top: 0;
+    }
+    .highlights__list > li { float: left; width: 50%; }
+
+    .highlights__card { border-radius: var(--radius) 0 0 var(--radius); }
+    .highlights__card--flat {
+      margin: 64px 0 0 -1px;            /* [FIGMA] Accessibility y4224, overlapping borders */
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+  }
+
+  /* About page: description paragraph instead of the "Read More" link */
+  .highlights--about { padding-top: 88px; }   /* [MEASURED] mobile eyebrow y1708 − image bottom 1620 */
+  .highlights__copy { margin-top: 18px; }     /* [FIGMA] y1692 − lead bottom 1674 */
+
+  @media (width >= 64rem) {
+    .highlights--about { padding-top: 128px; min-height: 0; }   /* [FIGMA] card y1472 − image bottom 1344 */
+    .highlights__copy { max-width: 370px; }   /* [FIGMA] w370 */
+  }
+}

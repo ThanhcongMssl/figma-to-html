@@ -1,0 +1,19 @@
+/* =========================================================================
+   Font: Epilogue (SIL OFL 1.1) — the exact font used in Figma, no substitute needed.
+   Variable version (wght axis 100–900), latin subset only, self-hosted in
+   assets/fonts/ rather than loaded from Google Fonts.
+   ========================================================================= */
+@layer reset {
+  @font-face {
+    font-family: "Epilogue";
+    src: url("../assets/fonts/epilogue-latin-wght-normal.woff2") format("woff2");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+    /* [MEASURED] Chrome places the text baseline ~1px higher than Figma: shift the baseline down 1.25% em,
+       keeping the total ascent + descent (79% + 23.5%) so the line height doesn't change. */
+    ascent-override: 80.25%;
+    descent-override: 22.25%;
+    line-gap-override: 0%;
+  }
+}

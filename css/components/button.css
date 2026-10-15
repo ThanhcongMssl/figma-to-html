@@ -1,0 +1,48 @@
+/* Buttons: Light/Button/Primary, Secondary and the outline button on dark backgrounds.
+   [FIGMA] 48 tall, radius 6, Epilogue 900 14/100% UPPERCASE text, centered. */
+@layer components {
+  .button {
+    display: inline-block;
+    vertical-align: top;
+    height: 48px;                       /* [FIGMA] */
+    padding-inline: 22px;               /* [ESTIMATE] width taken from the fixed width below */
+    border-radius: var(--radius);
+    font-size: 14px;                    /* [FIGMA] */
+    line-height: 48px;
+    font-weight: var(--weight-black);
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+    transition: background-color var(--duration-fast), color var(--duration-fast), box-shadow var(--duration-fast);
+  }
+
+  .button--primary {                    /* [FIGMA] #EF6D58, white text */
+    background-color: var(--accent);
+    color: var(--color-white);
+  }
+  .button--primary:hover { background-color: #e05a45; }  /* [ESTIMATE] hover state */
+
+  .button--secondary {                  /* [FIGMA] white, shadow 0 3 9 8% */
+    background-color: var(--color-white);
+    color: var(--color-dark);
+    box-shadow: var(--shadow-button);
+  }
+  .button--secondary:hover { box-shadow: 0 6px 18px rgb(57 20 0 / 0.14); }
+
+  .button--outline {                    /* [FIGMA] 1px border, white 29.57% on dark background */
+    border: 1px solid rgb(255 255 255 / 0.2957);
+    color: var(--color-white);
+    line-height: 48px;                  /* [MEASURED] (minus the 2px border) */
+  }
+  .button--outline:hover { border-color: var(--color-white); }
+
+  @media (width >= 64rem) {
+    .button { line-height: 50px; }      /* [MEASURED] desktop: text 1px below the box center */
+    .button--outline { line-height: 48px; }
+  }
+
+  /* Fixed width per Figma */
+  .button--w138 { width: 138px; padding-inline: 0; }  /* [FIGMA] HOW WE WORK…? xem component */
+  .button--w154 { width: 154px; padding-inline: 0; }  /* [FIGMA] CONTACT US / HOW WE WORK */
+  .button--w170 { width: 170px; padding-inline: 0; }  /* [FIGMA] EXPLORE MORE / DISCOVER ALL */
+}
